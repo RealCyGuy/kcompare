@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.link {
+    @apply text-gray-50 underline cursor-pointer hover:text-gray-300 duration-500;
+}
+
+.command {
+    @apply text-gray-200;
+}
