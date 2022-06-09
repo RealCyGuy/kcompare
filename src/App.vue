@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 const images = ref([]);
 var timer;
@@ -7,7 +7,7 @@ var canvas, ctx;
 var imageElements = [];
 
 onMounted(() => {
-  canvas = document.querySelector('canvas');
+  canvas = document.querySelector("canvas");
   ctx = canvas.getContext("2d");
   redraw();
 })
@@ -28,8 +28,8 @@ function redraw() {
 var loaded = 0;
 
 function typing(value) {
-  textarea.value.style.height = 'auto';
-  textarea.value.style.height = textarea.value.scrollHeight + 'px';
+  textarea.value.style.height = "auto";
+  textarea.value.style.height = textarea.value.scrollHeight + "px";
   clearTimeout(timer);
   timer = setTimeout(() => {
     imageElements = [];
@@ -37,7 +37,7 @@ function typing(value) {
       images.value = [];
       redraw();
     } else {
-      images.value = value.split('\n');
+      images.value = value.split("\n");
     }
     loaded = 0;
     images.value.forEach((_image) => {
@@ -92,8 +92,8 @@ https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f
     <canvas ref="canvas" width="1096" height="300" class="w-full p-2 max-w-3xl mx-auto">YOUR BROWSER DOESNT
       SUPPORT
       CANVASES?!?!?!</canvas>
-    <footer class="p-2 text-gray-300 mt-auto">Created by <a href="https://realcyguy.netlify.app"
-        class="link">Cyrus Yip</a>, open source on <a href="https://github.com/realcyguy/kcompare"
-        class="link">GitHub</a>, join my <a href="https://notbad.netlify.app/support" class="link">Discord</a>!</footer>
+    <footer class="p-2 text-gray-300 mt-auto">Created by <a href="https://realcyguy.netlify.app" class="link">Cyrus
+        Yip</a>, open source on <a href="https://github.com/realcyguy/kcompare" class="link">GitHub</a>, join my <a
+        href="https://notbad.netlify.app/support" class="link">Discord</a>!</footer>
   </div>
 </template>
