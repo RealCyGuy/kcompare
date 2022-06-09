@@ -80,9 +80,10 @@ https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f
     <div class="p-4">
       <h1 class="text-3xl text-gray-100">kcompare</h1>
       <h2 class="text-gray-300 mb-3">Compare <a href="https://karuta.com/" class="link">Karuta</a>'s <span
-          class="command">ku</span>, <span class="command">kdye</span>, <span class="command">km</span>, <span
-          class="command">kmr</span>, <span class="command">kfr</span>, <span class="command">kdr</span>, <span
-          class="command">ktrr</span>, <span class="command">kalr</span>, and <span class="command">ksr</span> image
+          class="command">kv</span>, <span class="command">ku</span>, <span class="command">kdye</span>, <span
+          class="command">km</span>, <span class="command">kmr</span>, <span class="command">kfr</span>, <span
+          class="command">kdr</span>, <span class="command">ktrr</span>, <span class="command">kalr</span>, and <span
+          class="command">ksr</span> image
         outputs. Just paste image links separated by new lines into this textarea below! Click <span class="link"
           @click="fillExampleInput()">here</span> for an example input.</h2>
       <textarea ref="textarea" @keyup="typing($event.target.value)"
