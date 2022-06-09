@@ -76,7 +76,7 @@ https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f
 </script>
 
 <template>
-  <div class="bg-gray-700 min-h-screen flex flex-col">
+  <div class="bg-[#36393f] min-h-screen flex flex-col">
     <div class="p-4">
       <h1 class="text-3xl text-gray-100">kcompare</h1>
       <h2 class="text-gray-300 mb-3">Compare <a href="https://karuta.com/" class="link">Karuta</a>'s <span
