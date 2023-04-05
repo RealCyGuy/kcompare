@@ -125,6 +125,7 @@ https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f
           name="cards"
           v-model="cardsPerRow"
           class="bg-gray-500 outline-none text-gray-200 px-3 py-1"
+          min="1"
         />
       </div>
     </div>
