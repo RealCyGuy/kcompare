@@ -96,6 +96,16 @@ https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f
     typing(textarea.value.value);
   }
 }
+
+async function copy() {
+  await canvas.toBlob((blob) => {
+    navigator.clipboard.write([
+      new ClipboardItem({
+        [blob.type]: blob,
+      }),
+    ]);
+  });
+}
 </script>
 
 <template>
@@ -136,6 +146,12 @@ https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f
           download="kcompare.png"
           >Download image</a
         >
+        <button
+          @click="copy"
+          class="bg-gray-500 outline-none text-gray-200 px-4 py-1 hover:bg-opacity-70 duration-100"
+        >
+          Copy image
+        </button>
       </div>
     </div>
     <canvas
