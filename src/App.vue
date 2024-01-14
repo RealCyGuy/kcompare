@@ -5,6 +5,7 @@ const images = ref([]);
 var timer;
 var canvas, ctx;
 var imageElements = [];
+const imageData = ref("");
 
 onMounted(() => {
   canvas = document.querySelector("canvas");
@@ -40,6 +41,7 @@ function redraw() {
       );
     }
   });
+  imageData.value = canvas.toDataURL();
 }
 
 var loaded = 0;
@@ -59,6 +61,7 @@ function typing(value) {
     loaded = 0;
     images.value.forEach((_image) => {
       let im = new Image();
+      im.crossOrigin = "anonymous";
       imageElements.push(im);
       im.src = _image;
       im.onload = function () {
@@ -114,19 +117,25 @@ https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f
       <textarea
         ref="textarea"
         @keyup="typing($event.target.value)"
-        class="w-full min-h-[200px] bg-gray-500 outline-none text-gray-200 px-3 py-1 whitespace-nowrap placeholder:whitespace-normal overflow-y-hidden resize-none"
+        class="w-full min-h-[200px] bg-gray-500 outline-none text-gray-200 px-3 py-1 whitespace-nowrap placeholder:whitespace-normal overflow-y-hidden resize-none mb-3 align-top"
         placeholder="Lines of image links here..."
       ></textarea>
-      <div>
-        <label for="cards" class="text-gray-300 mr-2">Cards per row</label>
+      <div class="flex flex-row justify-start items-center gap-3">
+        <label for="cards" class="text-gray-300">Cards per row</label>
         <input
           type="number"
           id="cards"
           name="cards"
           v-model="cardsPerRow"
-          class="bg-gray-500 outline-none text-gray-200 px-3 py-1"
+          class="bg-gray-500 outline-none text-gray-200 px-3 py-1 w-16"
           min="1"
         />
+        <a
+          :href="imageData"
+          class="bg-gray-500 outline-none text-gray-200 px-4 py-1 hover:bg-opacity-70 duration-100"
+          download="kcompare.png"
+          >Download image</a
+        >
       </div>
     </div>
     <canvas
