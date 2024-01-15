@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from "vue";
+import LZString from "lz-string";
 
 const images = ref([]);
 var timer;
@@ -10,16 +11,12 @@ const imageData = ref("");
 onMounted(() => {
   canvas = document.querySelector("canvas");
   ctx = canvas.getContext("2d");
-  redraw();
+  loadState();
 });
 
 const w = 274;
 const h = 400;
 const cardsPerRow = ref(4);
-
-watch(cardsPerRow, () => {
-  redraw();
-});
 
 function redraw() {
   canvas.width = cardsPerRow.value * w;
@@ -42,11 +39,12 @@ function redraw() {
     }
   });
   imageData.value = canvas.toDataURL();
+  saveState();
 }
 
 var loaded = 0;
 
-function typing(value) {
+function typing(value, timeout = 200) {
   textarea.value.style.height = "auto";
   textarea.value.style.height = textarea.value.scrollHeight + "px";
   clearTimeout(timer);
@@ -77,7 +75,7 @@ function typing(value) {
         }
       };
     });
-  }, 200);
+  }, timeout);
 }
 
 const textarea = ref(null);
@@ -93,7 +91,7 @@ https://cdn.discordapp.com/attachments/887049782579855410/982890745377730560/h9f
 https://cdn.discordapp.com/attachments/887049782579855410/982890745730068520/h9f6x4-shadowglass.png
 https://cdn.discordapp.com/attachments/887049782579855410/982890746044633148/h9f6x4-tiara.png
 https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f6x4-budokai.png`;
-    typing(textarea.value.value);
+    typing(textarea.value.value, 0);
   }
 }
 
@@ -105,6 +103,30 @@ async function copy() {
       }),
     ]);
   });
+}
+
+function saveState() {
+  if (images.value.length > 0) {
+    const state = cardsPerRow.value + "\n" + images.value.join("\n");
+    const compressed = LZString.compressToEncodedURIComponent(state);
+    window.history.replaceState({}, "", "#" + compressed);
+  } else {
+    window.history.replaceState({}, "", window.location.pathname);
+  }
+}
+
+function loadState() {
+  const state = LZString.decompressFromEncodedURIComponent(
+    window.location.hash.slice(1)
+  );
+  if (state.length == 0 || !state.includes("\n")) {
+    redraw();
+    return;
+  }
+  const lines = state.split("\n");
+  cardsPerRow.value = parseInt(lines[0]);
+  textarea.value.value = lines.slice(1).join("\n");
+  typing(textarea.value.value, 0);
 }
 </script>
 
@@ -139,6 +161,7 @@ async function copy() {
           v-model="cardsPerRow"
           class="bg-gray-500 outline-none text-gray-200 px-3 py-1 w-16"
           min="1"
+          @change="redraw()"
         />
         <a
           :href="imageData"
