@@ -152,17 +152,19 @@ function loadState() {
         class="w-full min-h-[200px] bg-gray-500 outline-none text-gray-200 px-3 py-1 whitespace-nowrap placeholder:whitespace-normal overflow-y-hidden resize-none mb-3 align-top"
         placeholder="Lines of image links here..."
       ></textarea>
-      <div class="flex flex-row justify-start items-center gap-3">
-        <label for="cards" class="text-gray-300">Cards per row</label>
-        <input
-          type="number"
-          id="cards"
-          name="cards"
-          v-model="cardsPerRow"
-          class="bg-gray-500 outline-none text-gray-200 px-3 py-1 w-16"
-          min="1"
-          @change="redraw()"
-        />
+      <div class="flex flex-row justify-start items-center gap-3 flex-wrap">
+        <div class="flex justify-start items-center bg-gray-500/40">
+          <label for="cards" class="text-gray-200 px-4">Cards per row</label>
+          <input
+            type="number"
+            id="cards"
+            name="cards"
+            v-model="cardsPerRow"
+            class="bg-gray-500 outline-none text-gray-200 px-3 py-1 w-16"
+            min="1"
+            @change="redraw()"
+          />
+        </div>
         <a
           :href="imageData"
           class="bg-gray-500 outline-none text-gray-200 px-4 py-1 hover:bg-opacity-70 duration-100"
