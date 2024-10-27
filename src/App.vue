@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
 import LZString from "lz-string";
+import { onMounted, ref } from "vue";
 
 const images = ref([]);
 var timer;
@@ -61,7 +61,7 @@ function typing(value, timeout = 200) {
       let im = new Image();
       im.crossOrigin = "anonymous";
       imageElements.push(im);
-      im.src = _image;
+      im.src = "https://wsrv.nl/?url=" + encodeURIComponent(_image);
       im.onload = function () {
         loaded++;
         if (loaded >= images.value.length) {
