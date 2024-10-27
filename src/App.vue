@@ -85,12 +85,12 @@ function fillExampleInput() {
     textarea.value.value.length == 0 ||
     confirm("Are you sure you want to replace the input?")
   ) {
-    textarea.value.value = `https://cdn.discordapp.com/attachments/887049782579855410/982890744744378378/h9f6x4-gildedstars.png
-https://cdn.discordapp.com/attachments/887049782579855410/982890745029599302/h9f6x4-rainforest.png
-https://cdn.discordapp.com/attachments/887049782579855410/982890745377730560/h9f6x4-springlilies.png
-https://cdn.discordapp.com/attachments/887049782579855410/982890745730068520/h9f6x4-shadowglass.png
-https://cdn.discordapp.com/attachments/887049782579855410/982890746044633148/h9f6x4-tiara.png
-https://cdn.discordapp.com/attachments/887049782579855410/982890746317254677/h9f6x4-budokai.png`;
+    textarea.value.value = `https://i.ibb.co/L6D8k9v/h9f6x4-gildedstars.png
+https://i.ibb.co/GTZCS7Q/h9f6x4-rainforest.png
+https://i.ibb.co/XCgZgtb/h9f6x4-springlilies.png
+https://i.ibb.co/wc1JKmp/h9f6x4-shadowglass.png
+https://i.ibb.co/d44md3t/h9f6x4-tiara.png
+https://i.ibb.co/X4ZDNy8/h9f6x4-budokai.png`;
     typing(textarea.value.value, 0);
   }
 }
